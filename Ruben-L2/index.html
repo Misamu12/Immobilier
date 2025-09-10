@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ImmobilierKin - Plateforme Immobilière RDC</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <i data-lucide="building-2"></i>
+            </div>
+            <span class="logo-text">ImmobilierKin</span>
+          </a>
+
+          <div class="nav-links desktop-only">
+            <a href="#" class="nav-link active">
+              <i data-lucide="home"></i>
+              <span>Accueil</span>
+            </a>
+            <a href="#properties" class="nav-link">
+              <i data-lucide="search"></i>
+              <span>Rechercher</span>
+            </a>
+            <a href="#dashboard" class="nav-link">
+              <i data-lucide="building-2"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#admin" class="nav-link">
+              <i data-lucide="shield"></i>
+              <span>Admin</span>
+            </a>
+          </div>
+
+          <div class="nav-actions desktop-only">
+            <button class="btn btn-ghost">Connexion</button>
+            <button class="btn btn-primary">S'inscrire</button>
+          </div>
+
+          <button class="mobile-menu-btn mobile-only">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden">
+          <div class="mobile-nav-links">
+            <a href="#" class="mobile-nav-link active">
+              <i data-lucide="home"></i>
+              <span>Accueil</span>
+            </a>
+            <a href="#properties" class="mobile-nav-link">
+              <i data-lucide="search"></i>
+              <span>Rechercher</span>
+            </a>
+            <a href="#dashboard" class="mobile-nav-link">
+              <i data-lucide="building-2"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#admin" class="mobile-nav-link">
+              <i data-lucide="shield"></i>
+              <span>Admin</span>
+            </a>
+          </div>
+          <div class="mobile-auth-actions">
+            <button class="btn btn-ghost">
+              <i data-lucide="user"></i>
+              Connexion
+            </button>
+            <button class="btn btn-primary">S'inscrire</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Home Page -->
+      <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="hero-overlay"></div>
+          <div class="container">
+            <div class="hero-content">
+              <h1 class="hero-title">
+                Trouvez votre bien immobilier à Kinshasa
+              </h1>
+              <p class="hero-subtitle">
+                Connectez-vous avec les meilleurs agents immobiliers de la RDC
+                pour acheter, vendre ou louer en toute confiance.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-light">
+                  Commencer votre recherche
+                  <i data-lucide="arrow-right"></i>
+                </button>
+                <button class="btn btn-outline-light">
+                  Devenir agent immobilier
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search Form -->
+        <section class="search-section">
+          <div class="container">
+            <div class="search-card">
+              <form class="search-form">
+                <div class="search-grid">
+                  <div class="form-group">
+                    <label>Type de transaction</label>
+                    <select name="transaction">
+                      <option value="">Acheter/Louer</option>
+                      <option value="achat">Achat</option>
+                      <option value="location">Location</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Type de bien</label>
+                    <select name="propertyType">
+                      <option value="">Tous les types</option>
+                      <option value="maison">Maison</option>
+                      <option value="appartement">Appartement</option>
+                      <option value="terrain">Terrain</option>
+                      <option value="hotel">Hôtel</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Localisation</label>
+                    <div class="input-with-icon">
+                      <i data-lucide="map-pin"></i>
+                      <input type="text" placeholder="Ville, quartier..." />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Fourchette de prix</label>
+                    <div class="price-range">
+                      <div class="input-with-icon">
+                        <i data-lucide="dollar-sign"></i>
+                        <input type="number" placeholder="Min" />
+                      </div>
+                      <div class="input-with-icon">
+                        <i data-lucide="dollar-sign"></i>
+                        <input type="number" placeholder="Max" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-full">
+                      <i data-lucide="search"></i>
+                      Rechercher
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+          <div class="container">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i data-lucide="building-2"></i>
+                </div>
+                <div class="stat-value">2,500+</div>
+                <div class="stat-label">Propriétés actives</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i data-lucide="users"></i>
+                </div>
+                <div class="stat-value">150+</div>
+                <div class="stat-label">Agents immobiliers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i data-lucide="star"></i>
+                </div>
+                <div class="stat-value">4.8/5</div>
+                <div class="stat-label">Avis clients</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Villes couvertes</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Properties -->
+        <section class="featured-properties">
+          <div class="container">
+            <div class="section-header">
+              <h2>Propriétés en vedette</h2>
+              <p>
+                Découvrez une sélection de nos meilleures offres immobilières
+              </p>
+            </div>
+            <div class="properties-grid">
+              <div class="property-card">
+                <div class="property-image">
+                  <div class="property-badges">
+                    <span class="badge badge-primary">À vendre</span>
+                    <span class="badge badge-outline">Maison</span>
+                  </div>
+                  <button class="favorite-btn">
+                    <i data-lucide="heart"></i>
+                  </button>
+                </div>
+                <div class="property-content">
+                  <div class="property-price">
+                    <i data-lucide="dollar-sign"></i>
+                    $450,000
+                  </div>
+                  <h3 class="property-title">
+                    Villa moderne avec piscine - Quartier résidentiel
+                  </h3>
+                  <div class="property-location">
+                    <i data-lucide="map-pin"></i>
+                    <span>Gombe, Kinshasa</span>
+                  </div>
+                  <div class="property-details">
+                    <div class="detail-item">
+                      <i data-lucide="bed"></i>
+                      <span>4</span>
+                    </div>
+                    <div class="detail-item">
+                      <i data-lucide="bath"></i>
+                      <span>3</span>
+                    </div>
+                    <div class="detail-item">
+                      <i data-lucide="square"></i>
+                      <span>280m²</span>
+                    </div>
+                  </div>
+                  <div class="property-agent">
+                    <div class="agent-info">
+                      <div class="agent-avatar">M</div>
+                      <div class="agent-details">
+                        <div class="agent-name">Marie Katanga</div>
+                        <div class="agent-role">Agent Immobilier</div>
+                      </div>
+                    </div>
+                    <div class="agent-actions">
+                      <button class="btn-icon">
+                        <i data-lucide="phone"></i>
+                      </button>
+                      <button class="btn-icon">
+                        <i data-lucide="mail"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="property-card">
+                <div class="property-image">
+                  <div class="property-badges">
+                    <span class="badge badge-primary">À vendre</span>
+                    <span class="badge badge-outline">Appartement</span>
+                  </div>
+                  <button class="favorite-btn active">
+                    <i data-lucide="heart"></i>
+                  </button>
+                </div>
+                <div class="property-content">
+                  <div class="property-price">
+                    <i data-lucide="dollar-sign"></i>
+                    $180,000
+                  </div>
+                  <h3 class="property-title">
+                    Appartement 3 pièces - Centre-ville
+                  </h3>
+                  <div class="property-location">
+                    <i data-lucide="map-pin"></i>
+                    <span>Kinshasa Centre</span>
+                  </div>
+                  <div class="property-details">
+                    <div class="detail-item">
+                      <i data-lucide="bed"></i>
+                      <span>2</span>
+                    </div>
+                    <div class="detail-item">
+                      <i data-lucide="bath"></i>
+                      <span>2</span>
+                    </div>
+                    <div class="detail-item">
+                      <i data-lucide="square"></i>
+                      <span>85m²</span>
+                    </div>
+                  </div>
+                  <div class="property-agent">
+                    <div class="agent-info">
+                      <div class="agent-avatar">J</div>
+                      <div class="agent-details">
+                        <div class="agent-name">Jean Kasongo</div>
+                        <div class="agent-role">Agent Immobilier</div>
+                      </div>
+                    </div>
+                    <div class="agent-actions">
+                      <button class="btn-icon">
+                        <i data-lucide="phone"></i>
+                      </button>
+                      <button class="btn-icon">
+                        <i data-lucide="mail"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="property-card">
+                <div class="property-image">
+                  <div class="property-badges">
+                    <span class="badge badge-primary">À vendre</span>
+                    <span class="badge badge-outline">Terrain</span>
+                  </div>
+                  <button class="favorite-btn">
+                    <i data-lucide="heart"></i>
+                  </button>
+                </div>
+                <div class="property-content">
+                  <div class="property-price">
+                    <i data-lucide="dollar-sign"></i>
+                    $120,000
+                  </div>
+                  <h3 class="property-title">
+                    Terrain commercial - Zone industrielle
+                  </h3>
+                  <div class="property-location">
+                    <i data-lucide="map-pin"></i>
+                    <span>Limete, Kinshasa</span>
+                  </div>
+                  <div class="property-details">
+                    <div class="detail-item">
+                      <i data-lucide="square"></i>
+                      <span>500m²</span>
+                    </div>
+                  </div>
+                  <div class="property-agent">
+                    <div class="agent-info">
+                      <div class="agent-avatar">G</div>
+                      <div class="agent-details">
+                        <div class="agent-name">Grace Mbuyi</div>
+                        <div class="agent-role">Agent Immobilier</div>
+                      </div>
+                    </div>
+                    <div class="agent-actions">
+                      <button class="btn-icon">
+                        <i data-lucide="phone"></i>
+                      </button>
+                      <button class="btn-icon">
+                        <i data-lucide="mail"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section-footer">
+              <button class="btn btn-outline">
+                Voir toutes les propriétés
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+          <div class="container">
+            <div class="section-header">
+              <h2>Pourquoi choisir ImmobilierKin ?</h2>
+              <p>
+                Notre plateforme vous offre les meilleurs outils pour réussir
+                vos projets immobiliers
+              </p>
+            </div>
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i data-lucide="shield"></i>
+                </div>
+                <h3>Agents vérifiés</h3>
+                <p>
+                  Tous nos agents immobiliers sont certifiés et font l'objet
+                  d'une validation rigoureuse
+                </p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i data-lucide="trending-up"></i>
+                </div>
+                <h3>Recherche intelligente</h3>
+                <p>
+                  Trouvez rapidement le bien idéal grâce à nos filtres avancés
+                  et notre algorithme de matching
+                </p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i data-lucide="users"></i>
+                </div>
+                <h3>Support personnalisé</h3>
+                <p>
+                  Notre équipe vous accompagne à chaque étape de votre projet
+                  immobilier
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+          <div class="container">
+            <div class="cta-content">
+              <h2>Prêt à commencer votre recherche ?</h2>
+              <p>
+                Rejoignez des milliers d'utilisateurs qui font confiance à
+                ImmobilierKin pour leurs projets immobiliers en RDC
+              </p>
+              <div class="cta-actions">
+                <button class="btn btn-light">Créer un compte gratuit</button>
+                <button class="btn btn-outline-light">En savoir plus</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer-content">
+              <div class="footer-section">
+                <div class="footer-brand">
+                  <div class="logo-icon">
+                    <i data-lucide="building-2"></i>
+                  </div>
+                  <span class="logo-text">ImmobilierKin</span>
+                </div>
+                <p>
+                  La plateforme de référence pour vos projets immobiliers en
+                  République Démocratique du Congo.
+                </p>
+              </div>
+              <div class="footer-section">
+                <h3>Utilisateurs</h3>
+                <ul>
+                  <li><a href="#">Rechercher un bien</a></li>
+                  <li><a href="#">Créer une alerte</a></li>
+                  <li><a href="#">Guide d'achat</a></li>
+                </ul>
+              </div>
+              <div class="footer-section">
+                <h3>Agents Immobiliers</h3>
+                <ul>
+                  <li><a href="#">Devenir agent immobilier</a></li>
+                  <li><a href="#">Dashboard</a></li>
+                  <li><a href="#">Outils de gestion</a></li>
+                </ul>
+              </div>
+              <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                  <li><a href="#">Centre d'aide</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Conditions d'utilisation</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <p>&copy; 2024 ImmobilierKin. Tous droits réservés.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Dashboard Page -->
+      <div id="dashboard" class="page">
+        <div class="dashboard-container">
+          <div class="dashboard-header">
+            <div class="dashboard-title">
+              <h1>Dashboard Agent Immobilier</h1>
+              <p>
+                Bienvenue dans votre espace de gestion immobilière à Kinshasa
+              </p>
+            </div>
+            <div class="dashboard-actions">
+              <button class="btn btn-primary">
+                <i data-lucide="plus"></i>
+                Nouvelle annonce
+              </button>
+              <button class="btn btn-outline">
+                <i data-lucide="settings"></i>
+                Paramètres
+              </button>
+            </div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <i data-lucide="building-2"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Annonces actives</div>
+                <div class="stat-change">+2 ce mois</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green">
+                <i data-lucide="eye"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">1,247</div>
+                <div class="stat-label">Vues totales</div>
+                <div class="stat-change">+15% vs dernier mois</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple">
+                <i data-lucide="message-square"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">28</div>
+                <div class="stat-label">Demandes reçues</div>
+                <div class="stat-change">+8 cette semaine</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">
+                <i data-lucide="trending-up"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">12.5%</div>
+                <div class="stat-label">Taux de conversion</div>
+                <div class="stat-change">+2.1% vs dernier mois</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="dashboard-grid">
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>
+                    <i data-lucide="building-2"></i>
+                    Mes annonces récentes
+                  </h3>
+                </div>
+                <div class="card-content">
+                  <div class="recent-properties">
+                    <div class="property-item">
+                      <div class="property-thumbnail"></div>
+                      <div class="property-info">
+                        <h4>Villa moderne - Gombe</h4>
+                        <p>$450,000 • 4 chambres</p>
+                        <span class="views">24 vues cette semaine</span>
+                      </div>
+                      <button class="btn btn-ghost">Voir</button>
+                    </div>
+                    <div class="property-item">
+                      <div class="property-thumbnail"></div>
+                      <div class="property-info">
+                        <h4>Appartement - Centre</h4>
+                        <p>$180,000 • 2 chambres</p>
+                        <span class="views">18 vues cette semaine</span>
+                      </div>
+                      <button class="btn btn-ghost">Voir</button>
+                    </div>
+                    <div class="property-item">
+                      <div class="property-thumbnail"></div>
+                      <div class="property-info">
+                        <h4>Terrain - Limete</h4>
+                        <p>$120,000 • 500m²</p>
+                        <span class="views">12 vues cette semaine</span>
+                      </div>
+                      <button class="btn btn-ghost">Voir</button>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline full-width">
+                    Voir toutes mes annonces
+                  </button>
+                </div>
+              </div>
+
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>
+                    <i data-lucide="message-square"></i>
+                    Demandes récentes
+                  </h3>
+                </div>
+                <div class="card-content">
+                  <div class="requests-list">
+                    <div class="request-item">
+                      <div class="request-info">
+                        <h4>Demande de visite</h4>
+                        <p>Villa moderne - Gombe</p>
+                        <span class="request-time"
+                          >Par Marie Katolo • il y a 2h</span
+                        >
+                      </div>
+                      <div class="request-actions">
+                        <button class="btn btn-outline btn-sm">Refuser</button>
+                        <button class="btn btn-primary btn-sm">Accepter</button>
+                      </div>
+                    </div>
+                    <div class="request-item">
+                      <div class="request-info">
+                        <h4>Demande d'information</h4>
+                        <p>Appartement - Centre</p>
+                        <span class="request-time"
+                          >Par Jean Mbala • il y a 4h</span
+                        >
+                      </div>
+                      <div class="request-actions">
+                        <button class="btn btn-outline btn-sm">Refuser</button>
+                        <button class="btn btn-primary btn-sm">Accepter</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline full-width">
+                    Voir toutes les demandes
+                  </button>
+                </div>
+              </div>
+
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>
+                    <i data-lucide="bar-chart-3"></i>
+                    Statistiques des vues
+                  </h3>
+                </div>
+                <div class="card-content">
+                  <canvas id="viewsChart" width="400" height="200"></canvas>
+                </div>
+              </div>
+
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>Actions rapides</h3>
+                </div>
+                <div class="card-content">
+                  <div class="quick-actions">
+                    <button class="quick-action-btn">
+                      <i data-lucide="plus"></i>
+                      <span>Ajouter une annonce</span>
+                    </button>
+                    <button class="quick-action-btn">
+                      <i data-lucide="users"></i>
+                      <span>Gérer les clients</span>
+                    </button>
+                    <button class="quick-action-btn">
+                      <i data-lucide="message-square"></i>
+                      <span>Messages</span>
+                    </button>
+                    <button class="quick-action-btn">
+                      <i data-lucide="bar-chart-3"></i>
+                      <span>Rapports</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Page -->
+      <div id="admin" class="page">
+        <div class="dashboard-container">
+          <div class="dashboard-header">
+            <div class="dashboard-title">
+              <h1>Administration</h1>
+              <p>Gestion et supervision de la plateforme ImmobilierKin</p>
+            </div>
+            <div class="dashboard-actions">
+              <button class="btn btn-outline">
+                <i data-lucide="bar-chart-3"></i>
+                Rapports
+              </button>
+              <button class="btn btn-outline">
+                <i data-lucide="settings"></i>
+                Paramètres
+              </button>
+            </div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <i data-lucide="users"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">2,547</div>
+                <div class="stat-label">Utilisateurs totaux</div>
+                <div class="stat-change">+127 ce mois</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green">
+                <i data-lucide="shield"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">156</div>
+                <div class="stat-label">Agents immobiliers actifs</div>
+                <div class="stat-change">+12 ce mois</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">
+                <i data-lucide="alert-triangle"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">23</div>
+                <div class="stat-label">Annonces en attente</div>
+                <div class="stat-change">À modérer</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon red">
+                <i data-lucide="x-circle"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Signalements</div>
+                <div class="stat-change">À traiter</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="dashboard-grid">
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>
+                    <i data-lucide="shield"></i>
+                    Agents immobiliers en attente
+                  </h3>
+                </div>
+                <div class="card-content">
+                  <div class="pending-list">
+                    <div class="pending-item">
+                      <div class="pending-info">
+                        <h4>Jean Kasongo</h4>
+                        <p>jean.kasongo@email.com</p>
+                        <p>+243 81 234 56 78</p>
+                        <span class="pending-date">Demande du 15/01/2024</span>
+                      </div>
+                      <div class="pending-actions">
+                        <button class="btn btn-outline btn-sm">
+                          <i data-lucide="eye"></i>
+                          Voir
+                        </button>
+                        <div class="action-buttons">
+                          <button class="btn btn-success btn-sm">
+                            <i data-lucide="check-circle"></i>
+                          </button>
+                          <button class="btn btn-danger btn-sm">
+                            <i data-lucide="x-circle"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pending-item">
+                      <div class="pending-info">
+                        <h4>Marie Katanga</h4>
+                        <p>marie.katanga@email.com</p>
+                        <p>+243 82 345 67 89</p>
+                        <span class="pending-date">Demande du 14/01/2024</span>
+                      </div>
+                      <div class="pending-actions">
+                        <button class="btn btn-outline btn-sm">
+                          <i data-lucide="eye"></i>
+                          Voir
+                        </button>
+                        <div class="action-buttons">
+                          <button class="btn btn-success btn-sm">
+                            <i data-lucide="check-circle"></i>
+                          </button>
+                          <button class="btn btn-danger btn-sm">
+                            <i data-lucide="x-circle"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline full-width">
+                    Voir toutes les demandes
+                  </button>
+                </div>
+              </div>
+
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>
+                    <i data-lucide="building-2"></i>
+                    Annonces à modérer
+                  </h3>
+                </div>
+                <div class="card-content">
+                  <div class="pending-list">
+                    <div class="pending-item">
+                      <div class="pending-info">
+                        <h4>Villa moderne avec piscine</h4>
+                        <p>Par Marie Katanga</p>
+                        <p>Gombe, Kinshasa</p>
+                        <div class="property-badge">
+                          <span class="badge badge-success">$450,000</span>
+                          <span class="pending-date">Soumis le 15/01/2024</span>
+                        </div>
+                      </div>
+                      <div class="pending-actions">
+                        <button class="btn btn-outline btn-sm">
+                          <i data-lucide="eye"></i>
+                          Voir
+                        </button>
+                        <div class="action-buttons">
+                          <button class="btn btn-success btn-sm">
+                            <i data-lucide="check-circle"></i>
+                          </button>
+                          <button class="btn btn-danger btn-sm">
+                            <i data-lucide="x-circle"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline full-width">
+                    Voir toutes les annonces
+                  </button>
+                </div>
+              </div>
+
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>Activité récente</h3>
+                </div>
+                <div class="card-content">
+                  <div class="activity-list">
+                    <div class="activity-item">
+                      <div class="activity-dot"></div>
+                      <div class="activity-content">
+                        <p class="activity-action">
+                          Nouvel agent immobilier approuvé
+                        </p>
+                        <p class="activity-details">
+                          Marie Katanga • Il y a 2h
+                        </p>
+                      </div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="activity-dot"></div>
+                      <div class="activity-content">
+                        <p class="activity-action">Annonce signalée</p>
+                        <p class="activity-details">Système • Il y a 4h</p>
+                      </div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="activity-dot"></div>
+                      <div class="activity-content">
+                        <p class="activity-action">
+                          Nouveau utilisateur inscrit
+                        </p>
+                        <p class="activity-details">Paul Kabongo • Il y a 6h</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dashboard-card">
+                <div class="card-header">
+                  <h3>
+                    <i data-lucide="bar-chart-3"></i>
+                    Statistiques utilisateurs
+                  </h3>
+                </div>
+                <div class="card-content">
+                  <canvas id="usersChart" width="400" height="200"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
